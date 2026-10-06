@@ -1,0 +1,96 @@
+.catalogue-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  color: var(--color-header-bg);
+}
+
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-box label {
+  font-weight: 600;
+}
+
+.filter-box input {
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.counter {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.book-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.book-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.book-title a {
+  color: var(--color-accent-blue);
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.book-title a:hover {
+  text-decoration: underline;
+}
+
+.book-author {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.book-price {
+  font-weight: 700;
+  color: var(--color-accent-price);
+  font-size: 1.1rem;
+  margin-top: auto;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  padding: 1.5rem;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 4px;
+  list-style: none;
+}
+
+@media (max-width: 600px) {
+  .book-list {
+    grid-template-columns: 1fr;
+  }
+}

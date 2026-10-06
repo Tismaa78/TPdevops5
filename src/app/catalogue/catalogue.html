@@ -1,0 +1,30 @@
+<section class="catalogue-section">
+  <h2>Catalogue</h2>
+
+  <div class="filter-box">
+    <label for="filter-input">Filtrer par auteur :</label>
+    <input
+      id="filter-input"
+      type="text"
+      [value]="filtre()"
+      (input)="onInput($event)"
+      placeholder="Nom de l'auteur..."
+    />
+  </div>
+
+  <p class="counter">{{ resultats().length }} livre(s)</p>
+
+  <ul class="book-list">
+    @for (l of resultats(); track l.id) {
+      <li class="book-card">
+        <h3 class="book-title">
+          <a [routerLink]="['/livre', l.id]">{{ l.titre }}</a>
+        </h3>
+        <p class="book-author">Auteur : {{ l.auteur }}</p>
+        <p class="book-price">{{ l.prix.toFixed(2) }} €</p>
+      </li>
+    } @empty {
+      <li class="no-results">Aucun livre ne correspond à cette recherche.</li>
+    }
+  </ul>
+</section>

@@ -1,0 +1,40 @@
+@if (livre(); as l) {
+  <article class="fiche-container">
+    <div class="fiche-detail">
+      <div class="book-cover">
+        <span class="cover-title">{{ l.titre }}</span>
+      </div>
+
+      <div class="book-info">
+        <h2 class="book-title">{{ l.titre }}</h2>
+        <p class="book-author">Auteur : <strong>{{ l.auteur }}</strong></p>
+        <p class="book-price">{{ l.prix.toFixed(2) }} €</p>
+
+        <button
+          class="btn-panier"
+          [disabled]="ajoute()"
+          (click)="ajouter()"
+        >
+          {{ ajoute() ? 'Ajouté' : 'Ajouter au panier' }}
+        </button>
+      </div>
+    </div>
+
+    <section class="suggestions-section">
+      <h3>Vous aimerez aussi</h3>
+      <div class="suggestions-grid">
+        @for (s of suggestions(); track s.id) {
+          <div class="suggestion-card">
+            <h4 class="suggestion-title">
+              <a [routerLink]="['/livre', s.id]">{{ s.titre }}</a>
+            </h4>
+            <p class="suggestion-author">{{ s.auteur }}</p>
+            <p class="suggestion-price">{{ s.prix.toFixed(2) }} €</p>
+          </div>
+        }
+      </div>
+    </section>
+  </article>
+} @else {
+  <p class="not-found">Ce livre n’existe pas.</p>
+}
